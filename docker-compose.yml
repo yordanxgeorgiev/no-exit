@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: postgres-db
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  app:
+    image: gcc:latest
+    container_name: c-app
+    ports:
+      - "9632:9632"
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: bash -c "apt update && apt install -y make libpq-dev && make && ./server"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres-data:
+  

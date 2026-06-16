@@ -9,11 +9,14 @@
 
 #include "parser.h"
 #include "router.h"
+#include "db.h"
 
 int main(int argc, char *argv[])
 {
     (void)argc;  // mark as unused for compiler warnings
     (void)argv;
+
+    db_seed();
 
     int fd;
     struct sockaddr_in server_address, client_address;

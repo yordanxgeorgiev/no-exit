@@ -9,8 +9,10 @@
 <body>
     <p>
         A technical guide describing how database queries can be manipulated through poorly sanitized inputs.
-        It explains how attackers exploit login forms and search fields, for example by <b>injecting always-true conditions</b>,
+        <br>It explains how attackers exploit login forms and search fields by <b>injecting always-true conditions</b>,
         bypassing authentication checks and exposing underlying data structures.
+        <br><br>
+        A completely random example of a vulnerable query: SELECT id FROM users WHERE username='%s' AND password='%s'
     </p>
 </body>
 
